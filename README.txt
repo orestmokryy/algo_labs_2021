@@ -1,9 +1,15 @@
-    This is a realisation of Rabin-Carp algorithm
+Ланцюжок зi слiв
+Код задачi: WCHAIN
+Двоє учасникiв грають у лiнгвiстичну гру. На початку гри дано список iз N слiв.
+Перший гравець обирає довiльне слово w1 i викреслює з нього одну довiльну лiтеру
+так, щоб отримати iнше слово w2 з цього списку. Пiсля цього хiд переходить до
+iншого гравця, i вiн намагається зробити те саме зi словом w2.
+Гра завершується в одному з двох випадкiв:
+• Залишається слово з однiєї лiтери.
+• Неможливо викреслити жодну лiтеру так, щоб отримати iнше слово зi словника.
 
-    To input your data change the following
-    
-    char txt[] = "is this a test and you should panik";
-	char pat[] = "is";
-		
-	int hashing_number = 101; //prime int for hashing
-                 //the bigger the number the less colisions you will get, but the computation will get more complex
+Визначте довжину максимального ланцюжка, якого можна досягти в цiй грi при
+заданих словах.
+
+Ввід і вивід через файли на цьому коміті не реалізовані, щоб ввести свої данні вписуйте свої слова в вектор
+vector<string> v = {"word","wor","wo","w","ord","or"};
