@@ -1,34 +1,62 @@
 #include <bits/stdc++.h>
 #include <fstream>
+#include <iostream>
+#include <string>
 
 using namespace std;
-class Solution {
-   public:
-   static bool cmp(string s1, string s2){
+class Solution
+{
+public:
+   static bool cmp(string s1, string s2)
+   {
       return s1.size() < s2.size();
    }
-   int longestStrChain(vector<string>& words) {
-      unordered_map <string, int> dp;
-      int n = words.size();
+   int longestWordChain(vector<string> &words)
+   {
+      unordered_map<string, int> dp;
+      int lenght = words.size();
       sort(words.begin(), words.end(), cmp);
-      int ret = 0;
-      for(int i = 0; i < n; i++){
+      int chain = 0;
+      for (int i = 0; i < lenght; i++)
+      {
          int best = 0;
-         for(int j = 0; j < words[i].size(); j++){
+         for (int j = 0; j < words[i].size(); j++)
+         {
             string word = words[i].substr(0, j) +
-            words[i].substr(j + 1);
+                          words[i].substr(j + 1);
             best = max(best, dp[word] + 1);
          }
          dp[words[i]] = best;
-         ret = max(ret, dp[words[i]]);
+         chain = max(chain, dp[words[i]]);
       }
-      return ret;
+      return chain;
    }
 };
 
-
-main(){
-   vector<string> v = {"a","b","ba","bca","bda","bdca"};
+int read(vector<string>& v)
+{
+   std::ifstream myfile;
+   myfile.open("data.txt");
+   std::string myline;
+   if (myfile.is_open())
+   {
+      while (myfile)
+      { 
+         std::getline(myfile, myline);
+         v.push_back(myline);
+      }
+   }
+   else
+   {
+      std::cout << "Couldn't open file\n";
+   }
+   return 0;
+}
+main()
+{
+   vector<string> v;
    Solution ob;
-   cout << (ob.longestStrChain(v));
+   read(v);
+   std::cout << "The longest word chain found:";
+   std::cout << (ob.longestWordChain(v));
 }
